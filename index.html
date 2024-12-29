@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Connect</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            --secondary-gradient: linear-gradient(45deg, #ffe601cc 0%, #c8115db0 100%);
+            --background-dark: #121212;
+            --text-light: #f4f4f4;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: var(--background-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 2000px;
+            overflow-x: hidden;
+        }
+        .social-container {
+            background: rgba(1, 0, 4, 0.391);
+            border-radius: 30px;
+            border: 2px solid rgba(14, 48, 197, 0.668);
+            padding: 3rem;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            backdrop-filter: blur(15px);
+            box-shadow: 
+                0 50px 100px rgba(203, 16, 16, 0.2),
+                0 15px 30px rgba(115, 0, 246, 0.71),
+                inset 0 0 20px rgba(0, 46, 144, 0.737);
+            transform-style: preserve-3d;
+            transition: all 0.6s ease;
+        }
+        .profile-header {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid transparent;
+            background-image: var(--primary-gradient);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            box-shadow: 
+                0 15px 35px rgba(0,0,0,0.2),
+                0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
+            transform: translateZ(50px);
+        }
+        .profile-image:hover {
+            transform: translateZ(80px) rotate(360deg);
+        }
+        .profile-details {
+            margin-top: 1rem;
+        }
+        .name {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--secondary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .tagline {
+            color: rgba(255,255,255,0.7);
+            font-size: 1rem;
+        }
+        .social-links {
+            display: grid;
+            gap: 1rem;
+            perspective: 1000px;
+        }
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+            transform: translateZ(-50px);
+        }
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            transform: skewX(-45deg);
+            transition: all 0.5s ease;
+        }
+        .social-link:hover::before {
+            left: 100%;
+        }
+        .social-link i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+            transform: translateZ(30px);
+        }
+        .instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+        .whatsapp {
+            background-color: #25D366;
+        }
+        .tiktok {
+            background-color: #000000;
+            color: white;
+            border: 2px solid #333;
+            transition: all 0.3s ease;
+        }
+        .tiktok:hover {
+            background-color: #1a1a1a;
+            box-shadow: 0 0 15px rgba(255,255,255,0.1);
+        }
+        .snapchat {
+            background-color: #FFFC00;
+            color: black;
+        }
+        .qr-section {
+            margin-top: 2rem;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        .qr-section:hover {
+            opacity: 1;
+        }
+        .nfc-badge {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background: var(--secondary-gradient);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            transform: rotate(15deg);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="social-container" id="socialContainer">
+        <div class="nfc-badge">Digital Card</div>
+        <div class="profile-header">
+            <img src="/hamd.jpg" alt="Profile" class="profile-image">
+            <div class="profile-details">
+                <h1 class="name">Hamad Al-Yousefi</h1>
+                <p class="tagline"> Engineer || Coffe Lover  </p>
+            </div>
+        </div>
+
+        <div class="social-links">
+
+             <!-- Snapchat Link -->
+             <a href="https://www.snapchat.com/add/r7mvd" target="_blank" class="social-link snapchat">
+                <i class="fab fa-snapchat-ghost"></i>
+                Snapchat
+            </a>
+
+            <!-- Instagram Link -->
+            <a href="https://www.instagram.com/_7mvd1" target="_blank" class="social-link instagram">
+                <i class="fab fa-instagram"></i>
+                Instagram
+            </a>
+            
+            <!-- WhatsApp Link -->
+            <a href="https://wa.me/+31686148011" target="_blank" class="social-link whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                WhatsApp
+            </a>
+            
+            <!-- TikTok Link -->
+            <a href="https://www.tiktok.com/@_7mvd" target="_blank" class="social-link tiktok">
+                <i class="fab fa-tiktok"></i>
+                TikTok
+            </a>
+            
+        </div>
+
+        <div class="qr-section">
+            <p class="text-xs text-gray-400 mt-4">Scan to save my contact</p>
+            <img src="hamdqr.png" alt="QR Code" class="mx-auto mt-2 rounded-lg">
+        </div>
+    </div>
+
+    <script>
+        // 3D Tilt Effect
+        const container = document.getElementById('socialContainer');
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 20;
+            const rotateY = -(x - centerX) / 20;
+            
+            container.style.transform = `
+                perspective(2000px) 
+                rotateX(${rotateX}deg) 
+                rotateY(${rotateY}deg) 
+                translateZ(50px)
+            `;
+        });
+
+        container.addEventListener('mouseleave', () => {
+            container.style.transform = 'perspective(2000px) rotateX(0) rotateY(0) translateZ(0)';
+        });
+
+        // Interaction Feedback
+        const socialLinks = document.querySelectorAll('.social-link');
+        socialLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                link.style.transform = 'translateZ(30px) scale(1.05)';
+            });
+            link.addEventListener('mouseleave', () => {
+                link.style.transform = 'translateZ(-50px) scale(1)';
+            });
+            link.addEventListener('click', (e) => {
+                link.style.transform = 'translateZ(30px) scale(0.95)';
+                setTimeout(() => {
+                    link.style.transform = 'translateZ(-50px) scale(1)';
+                }, 200);
+            });
+        });
+    </script>
+    
+</body>
+
+</html>
